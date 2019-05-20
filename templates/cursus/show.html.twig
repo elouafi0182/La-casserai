@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cursus{% endblock %}
+
+{% block body %}
+    <h1>Cursus</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cursus.id }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ cursus.categorie }}</td>
+            </tr>
+            <tr>
+                <th>Prijs</th>
+                <td>{{ cursus.prijs }}</td>
+            </tr>
+            <tr>
+                <th>Datum</th>
+                <td>{{ cursus.datum ? cursus.datum|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Programma</th>
+                <td>{{ cursus.programma }}</td>
+            </tr>
+            <tr>
+                <th>Opmerkingen</th>
+                <td>{{ cursus.opmerkingen }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('cursus_index') }}">back to list</a>
+
+    <a href="{{ path('cursus_edit', {'id': cursus.id}) }}">edit</a>
+
+    {{ include('cursus/_delete_form.html.twig') }}
+{% endblock %}

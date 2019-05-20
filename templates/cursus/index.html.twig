@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cursus index{% endblock %}
+
+{% block body %}
+    <h1>Cursus index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Categorie</th>
+                <th>Prijs</th>
+                <th>Datum</th>
+                <th>Programma</th>
+                <th>Opmerkingen</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cursus in cursuses %}
+            <tr>
+                <td>{{ cursus.id }}</td>
+                <td>{{ cursus.categorie }}</td>
+                <td>{{ cursus.prijs }}</td>
+                <td>{{ cursus.datum ? cursus.datum|date('Y-m-d') : '' }}</td>
+                <td>{{ cursus.programma }}</td>
+                <td>{{ cursus.opmerkingen }}</td>
+                <td>
+                    <a href="{{ path('cursus_show', {'id': cursus.id}) }}">show</a>
+                    <a href="{{ path('cursus_edit', {'id': cursus.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cursus_new') }}">Create new</a>
+{% endblock %}
